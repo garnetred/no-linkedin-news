@@ -4,15 +4,25 @@ let currentResponse;
 const callback = () => {
   const newsModuleElement = document.querySelector('#feed-news-module');
   const newsPageElement = document.querySelector('.scaffold-layout-container');
+  const newsStorylineContainer = document.querySelector(
+    '.news-storyline__container',
+  );
 
   if (newsModuleElement && currentPage === 'feed') {
     // hideNews();
     console.log('on home page');
     newsModuleElement.classList.add('hidden');
     observer.disconnect();
-  } else if (newsPageElement && currentPage === 'news') {
+  } else if (
+    newsPageElement &&
+    newsStorylineContainer &&
+    currentPage === 'news'
+  ) {
     console.log('on news page');
-    newsPageElement.classList.add('hidden');
+    newsModuleElement.classList.add('hidden');
+    newsStorylineContainer.classList.add('hidden');
+    observer.disconnect();
+  } else {
     observer.disconnect();
   }
 };
