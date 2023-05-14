@@ -45,23 +45,3 @@ const config = { attributes: true, childList: true, subtree: true };
 
 console.log(currentPage, 'current page');
 
-// if (currentPage && (currentPage === 'feed' || currentPage === 'news')) {
-//   observer.observe(document, config);
-// } else if (!currentPage) {
-//   observer.observe(document, config);
-// }
-
-// observer.disconnect();
-
-// const hideNews = () => {
-//   console.log(currentPage, currentResponse);
-//   console.log();
-//   if (currentResponse && currentPage === 'feed') {
-//     let newsFeedModule = document.getElementById('feed-news-module');
-//     console.log(newsFeedModule, 'news feed module?');
-//     newsFeedModule.classList.add('hidden');
-//   } else if (currentResponse && currentPage === 'news') {
-//     let newsFeedPage = document.getElementsByClassName('scaffold-layout')[0];
-//     newsFeedPage.classList.add('hidden');
-//   }
-// };
