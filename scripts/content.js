@@ -9,15 +9,11 @@ const callback = () => {
   );
 
   if (newsModuleElement && currentPage === 'feed') {
-    // hideNews();
     console.log('on home page');
+    console.log(newsModuleElement, 'news module event');
     newsModuleElement.classList.add('hidden');
     observer.disconnect();
-  } else if (
-    newsPageElement &&
-    newsStorylineContainer &&
-    currentPage === 'news'
-  ) {
+  } else if (newsPageElement && currentPage === 'news') {
     console.log('on news page');
     newsModuleElement.classList.add('hidden');
     newsStorylineContainer.classList.add('hidden');
@@ -34,14 +30,8 @@ const config = { attributes: true, childList: true, subtree: true };
   chrome.runtime.onMessage.addListener((obj, sender, response) => {
     const { page } = obj;
     console.log('message received!', page);
-    if (page && response) {
-      currentPage = page;
-      currentResponse = response;
-      observer.observe(document, config);
-      //   hideNews();
-    }
+    currentPage = page;
+    currentResponse = response;
+    observer.observe(document, config);
   });
 })();
-
-console.log(currentPage, 'current page');
-
