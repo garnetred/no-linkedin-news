@@ -1,34 +1,38 @@
-const hideNews = (page, response) => {
-  console.log('loaded!');
+let currentPage;
+let currentResponse;
 
-  if (response && page === 'feed') {
+const hideNews = () => {
+  console.log('loaded!');
+  if (currentResponse && currentPage === 'feed') {
     let newsFeedModule = document.querySelector('#feed-news-module');
     console.log(newsFeedModule, 'news feed module?');
     newsFeedModule.classList.add('hidden');
-  } else if (response && page === 'news') {
+  } else if (currentResponse && currentPage === 'news') {
     let newsFeedPage = document.querySelector('.scaffold-layout');
     newsFeedPage.classList.add('hidden');
-    // newsFeedModule = undefined;
+  } else {
+    console.error(response.error);
   }
 };
 
-// let hasUrl = false;
-// let page;
-// let response;
+document.addEventListener('DOMContentLoaded', hideNews);
+// could store both page and response at a high level
+// only after the page is loaded invoke hideNews?
+// separate function that checks if there's been a change to page and response?
 
-document.addEventListener('DOMContentLoaded', loadPage, false);
+const checkForUpdates = () => {
 
-const loadPage = () => {
-  return true;
-  // what should this function do?
-};
+}
 
-(async () => {
-  // let newsFeedModule;
-  // let newsFeedPage;
+(() => {
   chrome.runtime.onMessage.addListener((obj, sender, response) => {
     const { page } = obj;
-    console.log('message received', page);
-    hideNews(page, response);
+    // hideNews(page, response);
+    if (page && response) {
+        currentPage = page;
+        currentResponse = response;
+    }
+
   });
 })();
+
