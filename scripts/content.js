@@ -8,17 +8,16 @@ const callback = () => {
     '.news-storyline__container',
   );
 
+  console.log('in callback');
   if (newsModuleElement && currentPage === 'feed') {
     console.log('on home page');
     console.log(newsModuleElement, 'news module event');
     newsModuleElement.classList.add('hidden');
     observer.disconnect();
-  } else if (newsPageElement && currentPage === 'news') {
+  } else if (newsModuleElement && currentPage === 'news') {
     console.log('on news page');
     newsModuleElement.classList.add('hidden');
     newsStorylineContainer.classList.add('hidden');
-    observer.disconnect();
-  } else {
     observer.disconnect();
   }
 };
