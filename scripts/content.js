@@ -1,23 +1,36 @@
 let currentPage;
 let currentResponse;
 
-const newsModuleNode = document.getElementById('feed-news-module');
-// const newsFeedPageElement = document.querySelector('.scaffold-layout')[0];
+(() => {
+  chrome.runtime.onMessage.addListener((obj, sender, response) => {
+    const { page } = obj;
+    if (page && response) {
+      currentPage = page;
+      currentResponse = response;
+      //   hideNews();
+    }
+  });
+})();
+
+// const newsModuleNode = document.getElementById('feed-news-module');
 
 const callback = () => {
   const newsModuleElement = document.querySelector('#feed-news-module');
-  console.log(newsModuleElement);
-  if (newsModuleElement) {
+  const newsPageElement = document.querySelector('.scaffold-layout');
+  if (newsModuleElement && currentPage === 'feed') {
     // hideNews();
-    console.log('callback running');
+    console.log('on home page');
     newsModuleElement.classList.add('hidden');
-
+    observer.disconnect();
+  } else if (newsPageElement && currentPage === 'news') {
+    console.log('on news page');
+    newsPageElement.classList.add('hidden');
     observer.disconnect();
   }
 };
 const observer = new MutationObserver(callback);
 
-const config = { attributes: true, childList: true, subtree: true };
+const config = { childList: true, subtree: true };
 
 observer.observe(document, config);
 
@@ -35,14 +48,3 @@ const hideNews = () => {
     newsFeedPage.classList.add('hidden');
   }
 };
-
-(() => {
-  chrome.runtime.onMessage.addListener((obj, sender, response) => {
-    const { page } = obj;
-    if (page && response) {
-      currentPage = page;
-      currentResponse = response;
-      //   hideNews();
-    }
-  });
-})();
