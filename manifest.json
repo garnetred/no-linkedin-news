@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "No LinkedIn News",
+  "version": "1.0",
+  "description": "Disable LinkedIn News on home page and in news section",
+   "permissions": ["activeTab", "tabs"],
+  "icons": {
+    "16": "images/newspaper-emoji.png",
+    "48": "images/newspaper-emoji.png"
+},
+"background": {
+    "service_worker": "scripts/background.js"
+},
+"content_scripts": [
+    {
+        "js": ["scripts/content.js"],
+        "matches": [
+        "*://www.linkedin.com/news/*",
+        "*://www.linkedin.com/feed/*"
+      ],
+        "run_at": "document_end",
+        "css": ["styles.css"]
+    }
+],
+  "host_permissions": [
+    "*://www.linkedin.com/news/*",
+    "*://www.linkedin.com/feed/*"
+  ],
+  "action": {
+      "default_popup": "popup.html"
+  }
+
+}
