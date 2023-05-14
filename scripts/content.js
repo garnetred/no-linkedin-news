@@ -1,6 +1,26 @@
 let currentPage;
 let currentResponse;
 
+const newsModuleNode = document.getElementById('feed-news-module');
+// const newsFeedPageElement = document.querySelector('.scaffold-layout')[0];
+
+const callback = () => {
+  const newsModuleElement = document.querySelector('#feed-news-module');
+  console.log(newsModuleElement);
+  if (newsModuleElement) {
+    hideNews();
+    console.log('callback running');
+    observer.disconnect();
+  }
+};
+const observer = new MutationObserver(callback);
+
+const config = { attributes: true, childList: true, subtree: true };
+
+observer.observe(document, config);
+
+// observer.disconnect();
+
 const hideNews = () => {
   console.log('loaded!');
   console.log({ currentResponse, currentPage });
@@ -12,18 +32,17 @@ const hideNews = () => {
     let newsFeedPage = document.getElementsByClassName('scaffold-layout')[0];
     newsFeedPage.classList.add('hidden');
   } else {
-    console.error(currentResponse.error);
+    console.error('Error');
   }
 };
 
 (() => {
   chrome.runtime.onMessage.addListener((obj, sender, response) => {
     const { page } = obj;
-    // hideNews(page, response);
     if (page && response) {
       currentPage = page;
       currentResponse = response;
-      hideNews();
+      //   hideNews();
     }
   });
 })();
