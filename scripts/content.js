@@ -27,10 +27,16 @@ const config = { attributes: true, childList: true, subtree: true };
 
 (() => {
   chrome.runtime.onMessage.addListener((obj, sender, response) => {
-    const { page } = obj;
+    const { page, tabId } = obj;
+    console.log(obj);
+    console.log(sender);
     console.log('message received!', page);
     currentPage = page;
     currentResponse = response;
-    observer.observe(document, config);
+    // chrome.tabs.insertCSS({
+    //   file: 'css/newsfeed.css',
+    //   run_at: 'document_start',
+    // });
+    // observer.observe(document, config);
   });
 })();

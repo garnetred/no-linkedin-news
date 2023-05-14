@@ -5,13 +5,29 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     tabUrl &&
     tabUrl.includes('linkedin.com/feed')
   ) {
-    chrome.tabs.sendMessage(tabId, { page: 'feed' });
+    chrome.tabs.sendMessage(tabId, { page: 'feed', tabId });
+    // chrome.tabs.insertCSS({
+    //   file: 'css/newsfeed.css',
+    //   run_at: 'document_start',
+    // });
+    chrome.scripting.insertCSS({
+      target: { tabId: tabId },
+      files: ['css/newsfeed.css'],
+    });
   } else if (
     changeInfo.status === 'complete' &&
     tabUrl &&
     tabUrl.includes('linkedin.com/news')
   ) {
-    chrome.tabs.sendMessage(tabId, { page: 'news' });
+    chrome.tabs.sendMessage(tabId, { page: 'news', tabId });
+    // chrome.tabs.insertCSS(tabId, {
+    //   file: 'css/newsfeed.css',
+    //   runAt: 'document_start',
+    // });
+    chrome.scripting.insertCSS({
+      target: { tabId: tabId },
+      files: ['css/newsfeed.css'],
+    });
   }
 });
 

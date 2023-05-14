@@ -3,7 +3,7 @@
   "name": "No LinkedIn News",
   "version": "1.0",
   "description": "Disable LinkedIn News on home page and in news section",
-   "permissions": ["activeTab", "tabs"],
+   "permissions": ["activeTab", "tabs", "scripting"],
   "icons": {
     "16": "images/newspaper-emoji.png",
     "48": "images/newspaper-emoji.png"
@@ -19,7 +19,7 @@
         "*://www.linkedin.com/feed/*"
       ],
         "run_at": "document_end",
-        "css": ["styles.css"]
+        "css": ["css/styles.css"]
     }
 ],
   "host_permissions": [
