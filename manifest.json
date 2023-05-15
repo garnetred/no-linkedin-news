@@ -21,7 +21,6 @@
   ],
 "content_scripts": [
     {
-        "js": ["scripts/content.js"],
         "matches": [
         "*://www.linkedin.com/news/*",
         "*://www.linkedin.com/feed/*"
