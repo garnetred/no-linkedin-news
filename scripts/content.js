@@ -33,10 +33,5 @@ const config = { attributes: true, childList: true, subtree: true };
     console.log('message received!', page);
     currentPage = page;
     currentResponse = response;
-    // chrome.tabs.insertCSS({
-    //   file: 'css/newsfeed.css',
-    //   run_at: 'document_start',
-    // });
-    // observer.observe(document, config);
   });
 })();

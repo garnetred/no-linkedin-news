@@ -12,7 +12,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     // });
     chrome.scripting.insertCSS({
       target: { tabId: tabId },
-      files: ['css/newsfeed.css'],
+      files: ['css/feed.css'],
     });
   } else if (
     changeInfo.status === 'complete' &&
@@ -20,13 +20,9 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     tabUrl.includes('linkedin.com/news')
   ) {
     chrome.tabs.sendMessage(tabId, { page: 'news', tabId });
-    // chrome.tabs.insertCSS(tabId, {
-    //   file: 'css/newsfeed.css',
-    //   runAt: 'document_start',
-    // });
     chrome.scripting.insertCSS({
       target: { tabId: tabId },
-      files: ['css/newsfeed.css'],
+      files: ['css/news.css'],
     });
   }
 });

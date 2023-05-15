@@ -11,6 +11,14 @@
 "background": {
     "service_worker": "scripts/background.js"
 },
+"web_accessible_resources": [
+  {
+    "resources": ["css/*.css"],
+    "extension_ids": [
+      "iepjnmngamnefafgiahedgfibiabokml"
+    ]
+    }
+  ],
 "content_scripts": [
     {
         "js": ["scripts/content.js"],
@@ -18,8 +26,7 @@
         "*://www.linkedin.com/news/*",
         "*://www.linkedin.com/feed/*"
       ],
-        "run_at": "document_end",
-        "css": ["css/styles.css"]
+      "css": ["css/feed.css", "css/news.css"]
     }
 ],
   "host_permissions": [
