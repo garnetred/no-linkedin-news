@@ -6,8 +6,8 @@
    "permissions": ["activeTab", "tabs", "scripting"],
   "icons": {
     "16": "images/newspaper-emoji.png",
-    "32": "images/newspaper-emoji.png",
-    "48": "images/newspaper-emoji.png",
+    "32": "images/newspaper-emoji-32.png",
+    "48": "images/newspaper-emoji-48.png",
     "128": "images/newspaper-emoji-128.png"
 },
 "background": {
