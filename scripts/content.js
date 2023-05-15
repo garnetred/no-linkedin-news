@@ -1,29 +1,36 @@
 let currentPage;
 let currentResponse;
 
-const hideNews = () => {
-  console.log('loaded!');
-  console.log({ currentResponse, currentPage });
-  if (currentResponse && currentPage === 'feed') {
-    let newsFeedModule = document.getElementById('feed-news-module');
-    console.log(newsFeedModule, 'news feed module?');
-    newsFeedModule.classList.add('hidden');
-  } else if (currentResponse && currentPage === 'news') {
-    let newsFeedPage = document.getElementsByClassName('scaffold-layout')[0];
-    newsFeedPage.classList.add('hidden');
-  } else {
-    console.error(currentResponse.error);
+const callback = () => {
+  const newsModuleElement = document.querySelector('#feed-news-module');
+  const newsPageElement = document.querySelector('.scaffold-layout-container');
+  const newsStorylineContainer = document.querySelector(
+    '.news-storyline__container',
+  );
+
+  console.log('in callback');
+  if (newsModuleElement && currentPage === 'feed') {
+    console.log('on home page');
+    console.log(newsModuleElement, 'news module event');
+    newsModuleElement.classList.add('hidden');
+    observer.disconnect();
+  } else if (newsModuleElement && currentPage === 'news') {
+    console.log('on news page');
+    newsModuleElement.classList.add('hidden');
+    newsStorylineContainer.classList.add('hidden');
+    observer.disconnect();
   }
 };
+const observer = new MutationObserver(callback);
+
+const config = { attributes: true, childList: true, subtree: true };
 
 (() => {
   chrome.runtime.onMessage.addListener((obj, sender, response) => {
     const { page } = obj;
-    // hideNews(page, response);
-    if (page && response) {
-      currentPage = page;
-      currentResponse = response;
-      hideNews();
-    }
+    console.log('message received!', page);
+    currentPage = page;
+    currentResponse = response;
+    observer.observe(document, config);
   });
 })();
