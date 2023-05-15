@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "No LinkedIn News",
   "version": "0.0.1",
-  "description": "Disable LinkedIn News on home page and in news section",
+  "description": "Hide LinkedIn News on the home page and in individual news articles.",
    "permissions": ["tabs", "scripting"],
   "icons": {
     "16": "images/newspaper-emoji.png",
