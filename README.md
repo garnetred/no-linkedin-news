@@ -1,5 +1,8 @@
 # No LinkedIn News
 
+## Chrome Web Store
+This extension is now publicly available via the [Chrome Web Store](https://chrome.google.com/webstore/detail/no-linkedin-news/elaobedgdmbhchnbjcfpkcgdjhfnemdk). 
+
 ## Abstract
 This browser extension hides the news sections on LinkedIn. It was inspired by [DF Tube](https://chrome.google.com/webstore/detail/df-tube-distraction-free/mjdepdfccjgcndkmemponafgioodelna).
 
