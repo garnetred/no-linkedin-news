@@ -1,10 +1,9 @@
 # No LinkedIn News
 
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/decemberthedeveloper)
+
 ## Chrome Web Store
 This extension is now publicly available via the [Chrome Web Store](https://chrome.google.com/webstore/detail/no-linkedin-news/elaobedgdmbhchnbjcfpkcgdjhfnemdk). 
-
-## Donate 
-You can support this extension by [buying me a coffee](https://www.buymeacoffee.com/decemberthedeveloper) to help me continue to make free, user-friendly browser extensions.
 
 ## Abstract
 This browser extension hides the news sections on LinkedIn. It was inspired by [DF Tube](https://chrome.google.com/webstore/detail/df-tube-distraction-free/mjdepdfccjgcndkmemponafgioodelna).
