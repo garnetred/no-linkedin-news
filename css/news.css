@@ -2,3 +2,9 @@
 #feed-news-module {
   display: none !important;
 }
+
+/* this removes entire aside menu to the right on homepage*/
+
+aside[aria-label='Aside'] {
+  display: none !important;
+}

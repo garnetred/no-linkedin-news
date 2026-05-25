@@ -2,3 +2,7 @@
 #feed-right-rail-tooltip-outlet {
   display: none !important;
 }
+
+aside[aria-label='Aside'] {
+  display: none !important;
+}

@@ -3,39 +3,33 @@
   "name": "No LinkedIn News",
   "version": "0.0.3",
   "description": "Hide LinkedIn News on the home page and in individual news articles.",
-   "permissions": ["tabs", "scripting"],
+  "permissions": ["scripting"],
   "icons": {
     "16": "images/newspaper-emoji.png",
     "32": "images/newspaper-emoji-32.png",
     "48": "images/newspaper-emoji-48.png",
     "128": "images/newspaper-emoji-128.png"
-},
-"background": {
+  },
+  "background": {
     "service_worker": "scripts/background.js"
-},
-"web_accessible_resources": [
-  {
-    "resources": ["css/*.css"],
-    "extension_ids": [
-      "elaobedgdmbhchnbjcfpkcgdjhfnemdk"
-    ]
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["css/feed.css", "css/news.css"],
+      "extension_ids": ["elaobedgdmbhchnbjcfpkcgdjhfnemdk"]
     }
   ],
-"content_scripts": [
+  "content_scripts": [
     {
-        "matches": [
-        "*://www.linkedin.com/news/*",
-        "*://www.linkedin.com/feed/*"
-      ],
+      "matches": ["*://www.linkedin.com/news/*", "*://www.linkedin.com/feed/*"],
       "css": ["css/feed.css", "css/news.css"]
     }
-],
+  ],
   "host_permissions": [
     "*://www.linkedin.com/news/*",
     "*://www.linkedin.com/feed/*"
   ],
   "action": {
-      "default_popup": "popup.html"
+    "default_popup": "popup.html"
   }
-
 }
